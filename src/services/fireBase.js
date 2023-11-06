@@ -58,8 +58,8 @@ class Firebase {
   }
 
   static async createTodo(req, res) {
-    const { uid, id, title, description, createdDate } = req.body;
-    const todo = { id, title, description, createdDate };
+    const { uid, id, title, isTaskDone, createdDate } = req.body;
+    const todo = { id, title, isTaskDone, createdDate };
     console.log(todo)
     addDoc(collection(db, "users/" + uid + "/todos"), todo)
       .then(() => {
@@ -68,8 +68,8 @@ class Firebase {
   }
 
   static async updateTodo(req, res) {
-    const { uid, id, title, description, createdDate } = req.body;
-    const todo = { id, title, description, createdDate };
+    const { uid, id, title, isTaskDone, createdDate } = req.body;
+    const todo = { id, title, isTaskDone, createdDate };
     console.log(todo)
     setDoc(doc(db, "users/" + uid + "/todos", todo.id), todo)
       .then(() => {
